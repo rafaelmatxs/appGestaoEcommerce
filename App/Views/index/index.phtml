@@ -1,0 +1,53 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+
+        <div class="col-md-6 banner">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div>
+                    <h1 class="title">Tenha uma visão ampla do seu negócio</h1>
+                    <h1 class="mt-5 subtitle">Gerencie suas vendas e despesas</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <div class="col-md-12 text-center">
+                        <img src="/assets/img/logo.png" width="200px">
+                        <h1 class="fs-4 mt-3">Sistema de gestão de e-commerce</h1>
+                    </div>
+
+                        <form action="/autenticar" method="post">
+                            <div class="col-md-12 mt-3 mb-1">
+                                <input type="text" name="email" class="form-control" placeholder="E-mail">
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <input type="password" name="senha" class="form-control" placeholder="Senha">
+                            </div>
+                            <div class="col-md-12 mt-3 mb-1">
+                                <button type="submit" class="btn btn-block btn-danger mb-2">Entrar</button>
+                            </div>
+                            <?php if($this->view->login == 'erro') { ?>
+
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <span class="text text-danger">
+                                            *E-mail e/ou senha inválido(s)
+                                        </span>
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+                        </form>
+
+                    <div class="col-md-12 text-center">
+                        <hr>
+                        <a href="/inscreverse" class="btn btn-danger btn-block mb-2">Cadastrar novo usuário</a>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
