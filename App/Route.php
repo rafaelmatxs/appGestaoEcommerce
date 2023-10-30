@@ -28,14 +28,26 @@ class Route extends Bootstrap {
 
 		$routes['autenticar'] = array(
 			'route' => '/autenticar',
-			'controller' => 'authController',
+			'controller' => 'AuthController',
 			'action' => 'autenticar'
 		);
+
+		$routes['sair'] = array(
+            'route' => '/sair',
+            'controller' => 'AuthController',
+            'action' => 'sair'
+        );
 
 		$routes['dashboard'] = array(
 			'route' => '/dashboard',
 			'controller' => 'AppController',
 			'action' => 'dashboard'
+		);
+
+		$routes['adicionar_produto'] = array(
+			'route' => '/adicionar_produto',
+			'controller' => 'AppController',
+			'action' => 'adicionarProduto'
 		);
 
 		/* demais rotas */

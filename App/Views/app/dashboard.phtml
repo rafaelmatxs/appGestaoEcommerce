@@ -13,11 +13,39 @@
 
         <div class="collapse navbar-collapse" id="nav-principal">
             <ul class="navbar-nav ml-auto">
+
+                <div class="top"><!-- Top -->
+
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">menu</span>
+                    </button>
+
+                    <div class="theme-toggler">
+                        <span class="fas fa-moon active"></span>
+                        <span class="fas fa-sun"></span>
+                    </div>
+
+                    <div class="profile">
+
+                        <div class="info">
+                            <p>Hey, <b>Rafael</b></p>
+                            <small class="text-muted">Admin</small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="assets/img/profile-1.png" alt="profile-photo" width="40">
+                        </div>
+
+                    </div>
+
+                </div><!-- /Top -->
+
+                <!--
                 <li>
                     <a href="#" class="btn btn-lg btn-danger" id="btn-sair">
                         Sair
                     </a>
                 </li>
+                -->
             </ul>
         </div>
 
@@ -77,7 +105,7 @@
                             Adicionar Produto
                         </a>
 
-                        <a href="#">
+                        <a href="/sair">
                             <span class="fas fa-door-open"></span>
                             Sair
                         </a>
@@ -96,7 +124,7 @@
                             <div class="card-body text-dark">
                                 <h5 class="card-title">Vendas Totais</h5>
                                 <h2>R$340,58</h2>
-                                <br>
+                                <hr>
                                 <small class="card-text text-secondary">
                                     Últimas 24 horas
                                 </small>
@@ -107,7 +135,7 @@
                             <div class="card-body text-dark">
                                 <h5 class="card-title">Despesas Totais</h5>
                                 <h2>R$340,58</h2>
-                                <br>
+                                <hr>
                                 <small class="card-text text-secondary">
                                     Últimas 24 horas
                                 </small>
@@ -118,7 +146,7 @@
                             <div class="card-body text-dark">
                                 <h5 class="card-title">Lucro total</h5>
                                 <h2>R$340,58</h2>
-                                <br>
+                                <hr>
                                 <small class="form-text text-secondary">
                                     Últimas 24 horas
                                 </small>
@@ -235,7 +263,7 @@
                         <div class="card-body text-dark">
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="assets/img/profile-2.png" width="40">
+                                    <img src="assets/img/profile-1.png" width="40">
                                 </div>
                                 <div class="col">
                                     <p><b>Hugo Maciel</b> recebeu seu pedido "Drone Speed Sparkles PRO".</p>
@@ -243,9 +271,11 @@
                                 </div>
                             </div>
 
+                            <hr>
+
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="assets/img/profile-2.png" width="40">
+                                    <img src="assets/img/profile-1.png" width="40">
                                 </div>
                                 <div class="col">
                                     <p><b>Hugo Maciel</b> recebeu seu pedido "Drone Speed Sparkles PRO".</p>
@@ -253,9 +283,11 @@
                                 </div>
                             </div>
 
+                            <hr>
+
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="assets/img/profile-2.png" width="40">
+                                    <img src="assets/img/profile-1.png" width="40">
                                 </div>
                                 <div class="col">
                                     <p><b>Hugo Maciel</b> recebeu seu pedido "Drone Speed Sparkles PRO".</p>
@@ -275,7 +307,7 @@
 
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="assets/img/profile-2.png" width="40">
+                                    <img src="assets/img/profile-1.png" width="40">
                                 </div>
                                 <div class="col">
                                     <p><b>Hugo Maciel</b> recebeu seu pedido "Drone Speed Sparkles PRO".</p>
@@ -291,7 +323,7 @@
 
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="assets/img/profile-2.png" width="40">
+                                    <img src="assets/img/profile-1.png" width="40">
                                 </div>
                                 <div class="col">
                                     <p><b>Hugo Maciel</b> recebeu seu pedido "Drone Speed Sparkles PRO".</p>
@@ -307,7 +339,7 @@
 
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="assets/img/profile-2.png" width="40">
+                                    <img src="assets/img/profile-1.png" width="40">
                                 </div>
                                 <div class="col">
                                     <p><b>Hugo Maciel</b> recebeu seu pedido "Drone Speed Sparkles PRO".</p>
@@ -322,7 +354,7 @@
 
                 <div><!-- Adicionar produtos -->
 
-                    <button class="btn btn-lg btn-custom btn-dark btn-block">
+                    <button class="btn btn-lg btn-custom btn-dark btn-block" data-toggle="modal" data-target=".bd-example-modal-lg">
                         <span class="fas fa-solid fa-plus mr-2"></span>
                         Adicionar Produtos
                     </button>
@@ -332,6 +364,95 @@
             </div>
 
         </div>
+
     </section>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"><!-- Modal -->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h3 class="modal-title">Adicionar novo produto</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+                    <form action="/adicionar_produto" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="categoria" class="col-form-label col-form-label-lg">Categoria</label>
+                                <select id="inputCategoria" name="categoria" class="form-control form-control-lg" required><!-- ATENÇÃO AQUI -->
+                                    <option value="" selected>Escolha uma opção</option>
+                                    <option value="">Computadores</option>
+                                    <option value="1">Drones</option>
+                                    <option value="2">Fontes</option>
+                                    <option value="3">Headsets</option>
+                                    <option value="4">Microfones</option>
+                                    <option value="5">Monitores</option>
+                                    <option value="6">Mouses</option>
+                                    <option value="7">Periféricos</option>
+                                    <option value="8">Smartphones</option>
+                                    <option value="9">Teclados</option>
+                                    <option value="10">Utilitários</option>
+                                    <option value="11">Wearables</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="marca" class="col-form-label col-form-label-lg">Marca</label>
+                                <input type="text" class="form-control form-control-lg" name="marca" id="inputMarca" placeholder="Marca do produto" required>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="nome" class="col-form-label col-form-label-lg">Nome</label>
+                                <input type="text" class="form-control form-control-lg" name="nome" id="inputNome" placeholder="Nome do produto" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="quantidade" class="col-form-label col-form-label-lg">Quantidade</label>
+                                <input type="number" class="form-control form-control-lg" id="inputQuantidade" name="quantidade" placeholder="0" required>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="numero_de_serie" class="col-form-label col-form-label-lg">Número de Série</label>
+                                <input type="number" class="form-control form-control-lg" id="inputNumeroDeSerie" name="numero_de_serie" placeholder="Número de Série" required>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="numero_da_nota_fiscal" class="col-form-label col-form-label-lg">Número da Nota Fiscal</label>
+                                <input type="number" class="form-control form-control-lg" id="inputNumeroDaNotaFiscal" name="numero_da_nota_fiscal" placeholder="Número da Nota Fiscal" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="custoDoProduto" class="col-form-label col-form-label-lg">Preço de custo</label>
+                                <input type="number" class="form-control form-control-lg" id="inputCustoDoProduto" name="custo_do_produto" placeholder="R$" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="precoDoProduto" class="col-form-label col-form-label-lg">Preço Final</label>
+                                <input type="number" class="form-control form-control-lg" id="inputPrecoDoProtudo"name="preco_do_produto" placeholder="R$" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="descricao" class="col-form-label col-form-label-lg">Descrição</label>
+                                <textarea class="form-control form-control-lg" id="inputDescricao" name="descricao" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-lg btn-success mx-auto">Cadastrar Produto</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-secondary" onclick="" data-dismiss="modal">Fechar</button>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- /Modal -->
+
+
 
 </header>

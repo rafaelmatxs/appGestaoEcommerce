@@ -52,7 +52,7 @@ class Usuario extends Model {
 
     //recuperar um usuario por email
     public function getUsuarioPorEmail() {
-        $query = "select nome, email from usuarios where email = :email";
+        $query = "Select nome, email from usuarios where email = :email";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':email', $this->__get('email'));
         $stmt->execute();
