@@ -28,7 +28,31 @@ class Produto extends Model {
     //salva novo produto
     public function salvar() {
         
-        $query = "insert into produtos(nome, marca, categoria, quantidade, numero_de_serie, numero_da_nota_fiscal, custo_do_produto, preco_do_produto, descricao)values(:nome, :marca, :categoria, :quantidade, :numero_de_serie, :numero_da_nota_fiscal, :custo_do_produto, :preco_do_produto, :descricao)";
+        $query = "
+            insert into 
+                produtos(
+                    nome,
+                    marca, 
+                    categoria, 
+                    quantidade, 
+                    numero_de_serie, 
+                    numero_da_nota_fiscal, 
+                    custo_do_produto, 
+                    preco_do_produto, 
+                    descricao
+                    )
+                values(
+                    :nome, 
+                    :marca, 
+                    :categoria, 
+                    :quantidade, 
+                    :numero_de_serie, 
+                    :numero_da_nota_fiscal, 
+                    :custo_do_produto, 
+                    :preco_do_produto, 
+                    :descricao
+                )";
+                
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':nome', $this->__get('nome'));
         $stmt->bindValue(':marca', $this->__get('marca'));
@@ -43,6 +67,46 @@ class Produto extends Model {
 
         return $this;
     }
+
+    //função para recuperar informações dos produtos
+    public function getAll() {
+
+        $query = "
+            select
+                id,
+                nome,
+                marca,
+                categoria,
+                quantidade,
+                numero_de_serie,
+                numero_da_nota_fiscal,
+                custo_do_produto,
+                preco_do_produto,
+                descricao
+            from
+                produtos
+            order by
+                id asc
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+        /*
+        $stmt->bindValue(':id', $_POST['id']);
+        $stmt->bindValue('nome', $_POST['nome']);
+        $stmt->bindValue('marca', $_POST['marca']);
+        $stmt->bindValue('categoria', $_POST['categoria']);
+        $stmt->bindValue('quantidade', $_POST['quantidade']);
+        $stmt->bindValue('numero_de_serie', $_POST['numero_de_serie']);
+        $stmt->bindValue('numero_da_nota_fiscal', $_POST['numero_da_nota_fiscal']);
+        $stmt->bindValue('custo_do_produto', $_POST['custo_do_produto']);
+        $stmt->bindValue('preco_do_produto', $_POST['preco_do_produto']);
+        $stmt->bindValue('descricao', $_POST['descricao']);
+        */
 }
 
 ?>

@@ -59,7 +59,7 @@
 
                 <aside>
                     <div class="sidebar"><!-- Sidebar -->
-                        <a href="/dashboard" class="active">
+                        <a href="/dashboard">
                             <span class="fas fa-th-large"></span>
                             Dashboard
                         </a>
@@ -85,7 +85,7 @@
                             <span class="message-count">86</span>
                         </a>
 
-                        <a href="/produtos">
+                        <a href="/produtos" class="active">
                             <span class="fas fa-boxes"></span>
                             Produtos
                         </a>
@@ -116,67 +116,99 @@
 
             <div class="col-7 m-3"><!-- Coluna central -->
 
-                <div><!-- Painel administrativo -->
-                    <h4>Painel Administrativo</h4>
+                <div><!-- Filtro -->
 
-                    <div class="card-deck mt-3 mb-4">
+                    <div class="mb-4">
                         <div class="card custom-card border-dark mb-2">
                             <div class="card-body text-dark">
-                                <h5 class="card-title">Vendas Totais</h5>
-                                <h2>R$340,58</h2>
-                                <hr>
-                                <small class="card-text text-secondary">
-                                    Últimas 24 horas
-                                </small>
-                            </div>
-                        </div>
+                                <h4 class="card-title">Pesquisar</h4>
+                                <form action="#" method="post">
+                                    <div class="form-row form-inline justify-content-center">
+                                        <div class="form-group col-auto">
+                                            <label for="categoria" class="col-form-label col-form-label-lg">Categoria </label>
+                                            <select id="inputCategoria" name="categoria" class="form-control"><!-- ATENÇÃO AQUI -->
+                                                <option value="" selected>Escolha uma opção</option>
+                                                <option value="Computadores">Computadores</option>
+                                                <option value="Drones">Drones</option>
+                                                <option value="Fontes">Fontes</option>
+                                                <option value="Headsets">Headsets</option>
+                                                <option value="Microfones">Microfones</option>
+                                                <option value="Monitores">Monitores</option>
+                                                <option value="Mouses">Mouses</option>
+                                                <option value="Periféricos">Periféricos</option>
+                                                <option value="Smartphones">Smartphones</option>
+                                                <option value="Teclados">Teclados</option>
+                                                <option value="Utilitários">Utilitários</option>
+                                                <option value="Wearables">Wearables</option>
+                                            </select>
+                                        </div>
 
-                        <div class="card custom-card border-dark mb-2">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title">Despesas Totais</h5>
-                                <h2>R$340,58</h2>
-                                <hr>
-                                <small class="card-text text-secondary">
-                                    Últimas 24 horas
-                                </small>
-                            </div>
-                        </div>
+                                        <div class="form-group col-auto">
+                                            <label for="marca" class="col-form-label col-form-label-lg">Marca </label>
+                                            <input type="text" class="form-control" name="marca" id="inputMarca" placeholder="Marca">
+                                        </div>
 
-                        <div class="card custom-card border-dark mb-2">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title">Lucro total</h5>
-                                <h2>R$340,58</h2>
-                                <hr>
-                                <small class="form-text text-secondary">
-                                    Últimas 24 horas
-                                </small>
+                                        <div class="form-group col-auto">
+                                            <label for="nome" class="col-form-label col-form-label-lg">Nome </label>
+                                            <input type="text" class="form-control" name="nome" id="inputNome" placeholder="Nome do produto">
+                                        </div>
+
+                                        <div class="form-group col-auto">
+                                            <label for="id" class="col-form-label col-form-label-lg">Id </label>
+                                            <input type="number" class="form-control" name="id" id="inputId" placeholder="Id">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row form-inline justify-content-center">
+                                        <div class="form-group col-auto">
+                                            <label for="numero_de_serie" class="col-form-label col-form-label-lg">N/S </label>
+                                            <input type="number" class="form-control" name="numero_de_serie" id="inputNumeroDeSerie" placeholder="Número de série">
+                                        </div>
+
+                                        <div class="form-group col-auto">
+                                            <label for="numero_da_nota_fiscal" class="col-form-label col-form-label-lg">Nota Fiscal </label>
+                                            <input type="number" class="form-control" name="numero_de_serie" id="inputNumeroDeSerie" placeholder="Número de série">
+                                        </div>
+
+                                        <div class="form-group btn-filtrar ml-5">
+                                            <button class="btn btn-lg btn-success">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
 
-                    <h4>Pedidos Recentes</h4>
+                    <h4>Produtos</h4>
 
-                    <div class="card custom-card border-dark mb-2">
+                    <div class="card custom-card border-dark mb-3">
                         <div class="card-body text-dark">
 
                             <table class="table table-borderless table-hover text-center"><!-- Tabela de produtos -->
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nome do produto</th>
-                                        <th scope="col">Número do pedido</th>
-                                        <th scope="col">Pagamento</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Categoria</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Marca</th>
+                                        <th scope="col">Estoque</th>
+                                        <th scope="col">S/N</th>
                                         <th scope="col">Info</th>
+
                                     </tr>
                                 </thead>
                                 <?php foreach ($this->view->produtos as $id_produto => $produto) { ?>
                                     <tbody>
                                         <tr>
+                                            <td><?= $produto['categoria'] ?></td>
                                             <td><?= $produto['nome'] ?></td>
+                                            <td><?= $produto['marca'] ?></td>
+                                            <td><?= $produto['quantidade'] ?></td>
                                             <td><?= $produto['numero_de_serie'] ?></td>
-                                            <td>Processando</td>
-                                            <td>Pendente</td>
-                                            <td>Detalhes</td>
+                                            <td><a href="#">Detalhes</a></td>
                                         </tr>
                                     </tbody>
                                 <?php } ?>
@@ -185,7 +217,7 @@
                         </div>
                     </div>
 
-                    <div class="text-center mt-4 mostrartudo">
+                    <div class="text-center mt-4">
                         <a href="#" style="text-decoration: none;">Mostrar Tudo</a>
                     </div>
 
@@ -323,7 +355,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="categoria" class="col-form-label col-form-label-lg">Categoria</label>
-                                <select id="inputCategoria" name="categoria" class="form-control form-control-lg"><!-- ATENÇÃO AQUI -->
+                                <select id="inputCategoria" name="categoria" class="form-control form-control-lg" required><!-- ATENÇÃO AQUI -->
                                     <option value="" selected>Escolha uma opção</option>
                                     <option value="Computadores">Computadores</option>
                                     <option value="Drones">Drones</option>

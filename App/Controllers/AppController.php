@@ -11,6 +11,12 @@ class AppController extends Action {
     public function dashboard() {
         $this->validaAutenticacao();      
         
+
+        $produto = Container::getModel('Produto');
+        $produtos = $produto->getAll();
+
+        $this->view->produtos = $produtos;
+
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
@@ -43,8 +49,19 @@ class AppController extends Action {
 
         $produto->salvar();
 
-        header('Location: /dashboard');
+        header('Location: /produtos');
 
+    }
+
+    public function produtos() {
+        $this->validaAutenticacao();
+
+        $produto = Container::getModel('Produto');
+        $produtos = $produto->getAll();
+
+        $this->view->produtos = $produtos;
+
+        $this->render('produtos');
     }
 
 }

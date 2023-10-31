@@ -50,6 +50,12 @@ class Route extends Bootstrap {
 			'action' => 'adicionarProduto'
 		);
 
+		$routes['produtos'] = array(
+			'route' => '/produtos',
+			'controller' => 'AppController',
+			'action' => 'produtos'
+		);
+
 		/* demais rotas */
 		$this->setRoutes($routes);
 	}
