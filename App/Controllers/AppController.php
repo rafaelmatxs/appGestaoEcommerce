@@ -11,7 +11,7 @@ class AppController extends Action {
     public function dashboard() {
         $this->validaAutenticacao();      
         
-
+        //recupera produtos
         $produto = Container::getModel('Produto');
         $produtos = $produto->getAll();
 
@@ -57,7 +57,18 @@ class AppController extends Action {
         $this->validaAutenticacao();
 
         $produto = Container::getModel('Produto');
-        $produtos = $produto->getAll();
+        //$produtos = $produto->getAll();
+
+        //paginação
+        $total_registros_pagina = 10;
+        //$deslocamento = 0;
+        $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+        $deslocamento = ($pagina - 1) * $total_registros_pagina;
+
+        $produtos = $produto->getPorPagina($total_registros_pagina, $deslocamento);
+        $total_produtos = $produto->getTotalRegistros();
+        $this->view->total_de_paginas = ceil($total_produtos['total'] / $total_registros_pagina);
+        $this->view->pagina_ativa = $pagina;
 
         $this->view->produtos = $produtos;
 

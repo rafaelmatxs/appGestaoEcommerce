@@ -100,7 +100,7 @@
                             Configurações
                         </a>
 
-                        <a href="#">
+                        <a href="" data-toggle="modal" data-target=".bd-example-modal-lg">
                             <span class="fas fa-plus"></span>
                             Adicionar Produto
                         </a>
@@ -217,9 +217,29 @@
                         </div>
                     </div>
 
-                    <div class="text-center mt-4">
-                        <a href="#" style="text-decoration: none;">Mostrar Tudo</a>
-                    </div>
+                    <div class="row mt-5"><!-- Paginação -->
+                        <div class="col-sm"></div>
+                        <div class="col-sm">
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="?pagina1 " tabindex="-1">Primeira</a>
+                                    </li>
+
+                                    <?php for ($i = 1; $i <= $this->view->total_de_paginas; $i++) { ?>
+                                        <li class="page-item <?= $this->view->pagina_ativa == $i ? 'active' : '' ?>">
+                                            <a class="page-link" href="?pagina=<?= $i ?>"><?= $i ?></a>
+                                        </li>
+                                    <?php } ?>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="?pagina=<?= $this->view->total_de_paginas ?>">Última</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-sm"></div>
+                    </div><!-- /Paginação -->
 
                 </div>
 
@@ -338,90 +358,6 @@
 
     </section>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"><!-- Modal -->
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
 
-                    <h3 class="modal-title">Adicionar novo produto</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-
-                </div>
-
-                <div class="modal-body">
-                    <form action="/adicionar_produto" method="post">
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="categoria" class="col-form-label col-form-label-lg">Categoria</label>
-                                <select id="inputCategoria" name="categoria" class="form-control form-control-lg" required><!-- ATENÇÃO AQUI -->
-                                    <option value="" selected>Escolha uma opção</option>
-                                    <option value="Computadores">Computadores</option>
-                                    <option value="Drones">Drones</option>
-                                    <option value="Fontes">Fontes</option>
-                                    <option value="Headsets">Headsets</option>
-                                    <option value="Microfones">Microfones</option>
-                                    <option value="Monitores">Monitores</option>
-                                    <option value="Mouses">Mouses</option>
-                                    <option value="Periféricos">Periféricos</option>
-                                    <option value="Smartphones">Smartphones</option>
-                                    <option value="Teclados">Teclados</option>
-                                    <option value="Utilitários">Utilitários</option>
-                                    <option value="Wearables">Wearables</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="marca" class="col-form-label col-form-label-lg">Marca</label>
-                                <input type="text" class="form-control form-control-lg" name="marca" id="inputMarca" placeholder="Marca do produto" required>
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="nome" class="col-form-label col-form-label-lg">Nome</label>
-                                <input type="text" class="form-control form-control-lg" name="nome" id="inputNome" placeholder="Nome do produto" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                                <label for="quantidade" class="col-form-label col-form-label-lg">Quantidade</label>
-                                <input type="number" class="form-control form-control-lg" id="inputQuantidade" name="quantidade" placeholder="0" required>
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="numero_de_serie" class="col-form-label col-form-label-lg">Número de Série</label>
-                                <input type="number" class="form-control form-control-lg" id="inputNumeroDeSerie" name="numero_de_serie" placeholder="Número de Série" required>
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="numero_da_nota_fiscal" class="col-form-label col-form-label-lg">Número da Nota Fiscal</label>
-                                <input type="number" class="form-control form-control-lg" id="inputNumeroDaNotaFiscal" name="numero_da_nota_fiscal" placeholder="Número da Nota Fiscal" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="custoDoProduto" class="col-form-label col-form-label-lg">Preço de custo</label>
-                                <input type="number" class="form-control form-control-lg" id="inputCustoDoProduto" name="custo_do_produto" placeholder="R$" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="precoDoProduto" class="col-form-label col-form-label-lg">Preço Final</label>
-                                <input type="number" class="form-control form-control-lg" id="inputPrecoDoProtudo" name="preco_do_produto" placeholder="R$" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="descricao" class="col-form-label col-form-label-lg">Descrição</label>
-                                <textarea class="form-control form-control-lg" id="inputDescricao" name="descricao" rows="10"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <button type="submit" class="btn btn-lg btn-success mx-auto">Cadastrar Produto</button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-lg btn-secondary" onclick="" data-dismiss="modal">Fechar</button>
-                </div>
-
-            </div>
-        </div>
-    </div><!-- /Modal -->
 
 </header>
